@@ -26,7 +26,9 @@
         <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
         <com.ibm.websphere.appserver.api.jaxrs20.version>1.0.20</com.ibm.websphere.appserver.api.jaxrs20.version>
         <javax.json-api.version>1.1.2</javax.json-api.version>
+        <com.ibm.websphere.appserver.api.json.version>1.0.20</com.ibm.websphere.appserver.api.json.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <com.ibm.websphere.appserver.api.servlet.version>1.1.20</com.ibm.websphere.appserver.api.servlet.version>
         <junit.version>4.12</junit.version>
         <org.apache.cxf.version>3.2.4</org.apache.cxf.version>
         <javax.json.version>1.1.2</javax.json.version>
@@ -62,11 +64,24 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.ibm.websphere.appserver.api</groupId>
+            <artifactId>com.ibm.websphere.appserver.api.json</artifactId>
+            <version>${com.ibm.websphere.appserver.api.json.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.ibm.websphere.appserver.api</groupId>
+            <artifactId>com.ibm.websphere.appserver.api.servlet</artifactId>
+            <version>${com.ibm.websphere.appserver.api.servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
 
         <dependency>
             <groupId>junit</groupId>
