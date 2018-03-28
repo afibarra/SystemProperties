@@ -4,7 +4,6 @@
         <feature>jaxrs-2.0</feature>
         <feature>jsonp-1.0</feature>
         <feature>servlet-3.1</feature>
-        <feature>jpa-2.1</feature>
     </featureManager>
 
     <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"

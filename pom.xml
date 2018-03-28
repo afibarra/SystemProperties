@@ -35,6 +35,11 @@
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <liberty-maven-plugin.version>2.2</liberty-maven-plugin.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <docker-maven-plugin.version>1.0.0</docker-maven-plugin.version>
+
+        <docker.image.name>afibarra/openliberty</docker.image.name>
+        <docker.image.tag>latest</docker.image.tag>
     </properties>
 
     <dependencies>
@@ -218,6 +223,48 @@
                 <configuration>
                     <summaryFile>${project.build.directory}/test-reports/it/failsafe-summary.xml</summaryFile>
                     <reportsDirectory>${project.build.directory}/test-reports/it</reportsDirectory>
+                </configuration>
+            </plugin>
+
+            <!-- Docker -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/dockerfile</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/docker</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker-maven-plugin.version}</version>
+                <configuration>
+                    <imageName>${docker.image.name}:${docker.image.tag}</imageName>
+                    <dockerDirectory>${basedir}/target/dockerfile</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}/liberty/wlp/usr/servers/defaultServer/apps</directory>
+                            <include>rest.war</include>
+                        </resource>
+                    </resources>
                 </configuration>
             </plugin>
         </plugins>
