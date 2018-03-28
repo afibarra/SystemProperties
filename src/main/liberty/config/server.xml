@@ -4,10 +4,22 @@
         <feature>jaxrs-2.0</feature>
         <feature>jsonp-1.0</feature>
         <feature>servlet-3.1</feature>
+        <feature>jpa-2.1</feature>
+        <feature>microprofile-1.3</feature>
     </featureManager>
 
     <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
                   id="defaultHttpEndpoint" host="*"/>
+
+    <keyStore id="defaultKeyStore" password="yourpassword"/>
+
+    <dataSource id="postgres10" jndiName="jdbc/puPostgres">
+        <jdbcDriver libraryRef="PostgresJDBCLib"/>
+        <properties.javax.persistence.jdbc driver="org.postgresql.Driver" url="jdbc:postgresql://172.17.0.234:5432/postgres" user="postgres" password="p05tgr35" />
+    </dataSource>
+    <library id="PostgresJDBCLib">
+        <fileset dir="/tmp" includes="postgresql-42.2.2.jar"/>
+    </library>
 
     <webApplication location="rest.war" contextRoot="${app.context.root}"/>
 </server>

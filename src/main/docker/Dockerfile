@@ -10,6 +10,8 @@ FROM open-liberty:latest
 #    rm jce_policy-8.zip && \
 #    yes |cp -v /tmp/UnlimitedJCEPolicyJDK8/*.jar /opt/ibm/java/jre/lib/security/
 
+ADD postgresql-42.2.2.jar /tmp
+
 RUN ln -s /opt/ol/wlp/usr/servers/defaultServer/dropins /dropins
 
 ADD rest.war /dropins

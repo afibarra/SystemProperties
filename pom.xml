@@ -29,6 +29,13 @@
         <com.ibm.websphere.appserver.api.json.version>1.0.20</com.ibm.websphere.appserver.api.json.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <com.ibm.websphere.appserver.api.servlet.version>1.1.20</com.ibm.websphere.appserver.api.servlet.version>
+        <microprofile.version>1.2</microprofile.version>
+
+        <com.ibm.websphere.appserver.api.persistence.version>1.0.20
+        </com.ibm.websphere.appserver.api.persistence.version>
+        <hibernate-core.version>5.2.16.Final</hibernate-core.version>
+        <postgresql.version>42.2.2</postgresql.version>
+
         <junit.version>4.12</junit.version>
         <org.apache.cxf.version>3.2.4</org.apache.cxf.version>
         <javax.json.version>1.1.2</javax.json.version>
@@ -81,7 +88,29 @@
             <version>${com.ibm.websphere.appserver.api.servlet.version}</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>${microprofile.version}</version>
+            <scope>provided</scope>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.websphere.appserver.api</groupId>
+            <artifactId>com.ibm.websphere.appserver.api.persistence</artifactId>
+            <version>${com.ibm.websphere.appserver.api.persistence.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
